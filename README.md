@@ -99,6 +99,11 @@ kubectl apply -f mongo-statefulset.yaml
 Mongo Service
 ```
 kubectl apply -f mongo-service.yaml
+
+```
+Connect to the Mongo db mongo-0 
+```
+kubectl exec -it mongo-0 -- mongo
 ```
 
 Create a temporary network utils pod. Enter into a bash session within it. In the terminal run the following command:
