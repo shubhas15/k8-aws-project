@@ -1,6 +1,6 @@
 apiVersion: apps/v1
-kind: Statefulset
-metadata: 
+kind: StatefulSet
+metadata:
   name: mongo
   namespace: dev-voting
 spec:
@@ -11,7 +11,7 @@ spec:
       role: db
   template:
     metadata:
-      labels: 
+      labels:
         role: db
         env: dev
         replicaset: rs0.main
@@ -24,14 +24,15 @@ spec:
                 labelSelector:
                   matchExpressions:
                     - key: replicaset
-                      operator: In 
+                      operator: In
                       values:
                         - rs0.main
+                topologyKey: kubernetes.io/hostname
       terminationGracePeriodSeconds: 10
       containers:
         - name: mongo
           image: mongo:4.2
-          commands:
+          command:
             - "numactl"
             - "--interleave=all"
             - "mongod"
@@ -44,14 +45,14 @@ spec:
           ports:
             - containerPort: 27017
           volumeMounts:
-            - name:  mongodb-persistent-storage-claim
+            - name: mongodb-persistent-storage-claim
               mountPath: /data/db
   volumeClaimTemplates:
     - metadata:
         name: mongodb-persistent-storage-claim
       spec:
         accessModes:
-          -ReadWriteOnce
+          - ReadWriteOnce
         storageClassName: gp2
         resources:
           requests:
