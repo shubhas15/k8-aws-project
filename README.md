@@ -110,17 +110,6 @@ Create a temporary network utils pod. Enter into a bash session within it. In th
 ```
 kubectl run --rm utils -it --image praqma/network-multitool -- bash
 ```
-Within the new utils pod shell, execute the following DNS queries:
-```
-for i in {0..2}; do nslookup mongo-$i.mongo; done
-```
-Note: This confirms that the DNS records have been created successfully and can be resolved within the cluster, 1 per MongoDB pod that exists behind the Headless Service - earlier created. 
-
-Exit the utils container
-```
-exit
-```
-
 On the `mongo-0` pod, initialise the Mongo database Replica set. In the terminal run the following command:
 ```
 cat << EOF | kubectl exec -it mongo-0 -- mongo
