@@ -27,7 +27,6 @@ spec:
                       operator: In 
                       values:
                         - rs0.main
-                topologykey: kubernetes.io/hostname
       terminationGracePeriodSeconds: 10
       containers:
         - name: mongo
