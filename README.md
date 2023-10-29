@@ -93,12 +93,12 @@ kubectl config set-context --current --namespace dev-voting
 
 To create Mongo statefulset with Persistent volumes, run the command in manifests folder:
 ```
-kubectl apply -f mongo-statefulset.yaml
+kubectl create -f mongo-statefulset.yaml
 ```
 
 Mongo Service
 ```
-kubectl apply -f mongo-service.yaml
+kubectl create -f mongo-service.yaml
 
 ```
 Connect to the Mongo db mongo-0 
@@ -147,14 +147,14 @@ EOF
 
 Create Mongo secret:
 ```
-kubectl apply -f mongo-secret.yaml
+kubectl create -f mongo-secret.yaml
 ```
 
 **API Setup**
 
 Create GO API deployment by running the following command:
 ```
-kubectl apply -f api-deployment.yaml
+kubectl create -f api-deployment.yaml
 ```
 
 Expose API deployment through service using the following command:
@@ -197,7 +197,7 @@ echo API_ELB_PUBLIC_FQDN=$API_ELB_PUBLIC_FQDN
 
 Create the Frontend Deployment resource. In the terminal run the following command:
 ```
-kubectl apply -f frontend-deployment.yaml
+kubectl create -f frontend-deployment.yaml
 ```
 
 Create a new Service resource of LoadBalancer type. In the terminal run the following command:
