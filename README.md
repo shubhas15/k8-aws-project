@@ -200,6 +200,11 @@ Create the Frontend Deployment resource. In the terminal run the following c
 kubectl create -f frontend-deployment.yaml
 ```
 
+Create the Frontend HorizontalAutoscaling resource. In the terminal run the following command:
+```
+kubectl create -f frontend-hpa.yaml
+```
+
 Create a new Service resource of LoadBalancer type. In the terminal run the following command:
 ```
 kubectl expose deploy frontend \
