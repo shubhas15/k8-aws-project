@@ -104,13 +104,9 @@ kubectl apply -f mongo-service.yaml
 Connect to the Mongo db mongo-0 
 ```
 kubectl exec -it mongo-0 -- mongo
-```
 
-Create a temporary network utils pod. Enter into a bash session within it. In the terminal run the following command:
 ```
-kubectl run --rm utils -it --image praqma/network-multitool -- bash
-```
-On the `mongo-0` pod, initialise the Mongo database Replica set. In the terminal run the following command:
+On the `mongo-0` pod, initialise the Mongo database Replica set. In the terminal run the following command: //This sets mongo-0 db as primart , mongo-1 and mongo-2 as Secondary Database.
 ```
 cat << EOF | kubectl exec -it mongo-0 -- mongo
 rs.initiate();
@@ -127,7 +123,6 @@ EOF
 ```
 
 Note: Wait until this command completes successfully, it typically takes 10-15 seconds to finish, and completes with the message: bye
-
 
 To confirm run this in the terminal:
 ```
