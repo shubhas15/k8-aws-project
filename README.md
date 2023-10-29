@@ -106,7 +106,7 @@ Connect to the Mongo db mongo-0
 kubectl exec -it mongo-0 -- mongo
 
 ```
-On the `mongo-0` pod, initialise the Mongo database Replica set. In the terminal run the following command: //This sets mongo-0 db as primart , mongo-1 and mongo-2 as Secondary Database.
+On the `mongo-0` pod, initialise the Mongo database Replica set. In the terminal run the following command:This sets mongo-0 db as primart , mongo-1 and mongo-2 as Secondary Database.
 ```
 cat << EOF | kubectl exec -it mongo-0 -- mongo
 rs.initiate();
